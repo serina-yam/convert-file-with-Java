@@ -1,10 +1,7 @@
-package com.example;
+package com.example.controllers;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import org.jodconverter.core.DocumentConverter;
 import org.jodconverter.core.office.OfficeException;
@@ -16,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.Status;
+import com.example.models.ApiResponse;
+
+/**
+ * JODConverterを使ってxlsxファイルをpdfファイルに変換する.
+ */
 @RestController
 public class ExcelToPdfConverter {
 
@@ -26,15 +29,38 @@ public class ExcelToPdfConverter {
         * @throws IOException
         */
         @PostMapping("/convertXlsxToPdf")
-        public void excute(@RequestParam("xlsxFile") MultipartFile xlsxFileMulti) throws OfficeException, IOException {
-                String officeHome = "/Applications/LibreOffice.app"; // LibreOfficeのインストールパスを指定
-                String pdfFilePath = "/Users/yamamotoserina/Downloads/output.pdf";
+        public ApiResponse excute(@RequestParam("xlsxFile") MultipartFile xlsxFileMulti) {
 
+                String officeHome = "/Applications/LibreOffice.app/Contents"; // LibreOfficeのインストールパスを指定
+                String pdfFilePath = "/Users/user-name/Downloads/output.pdf"; // 出力したいpdfファイルのパスを指定
 
                 OfficeManager officeManager = LocalOfficeManager.builder()
                         .officeHome(officeHome)
                         .build();
+
+                try {
+                        convertXlsxToPdf(officeManager, xlsxFileMulti, pdfFilePath);
+                        return new ApiResponse(Status.OK.getValue(), "PDF変換処理は正常終了しました。", pdfFilePath);
+                } catch (OfficeException | IOException e) {
+                        e.printStackTrace();
+                        return new ApiResponse(Status.NG.getValue(), "PDF変換処理は異常しました。", null);
+                }
+        }
+
+        /**
+         * xlsxファイルをpdfファイルに変換.
+         * @param officeManager
+         * @param xlsxFileMulti
+         * @param pdfFilePath
+         * @return
+         * @throws OfficeException
+         * @throws IOException
+         */
+        private ApiResponse convertXlsxToPdf(OfficeManager officeManager, MultipartFile xlsxFileMulti,
+                        String pdfFilePath) throws OfficeException, IOException {
+
                 DocumentConverter converter = LocalConverter.make(officeManager);
+
                 try {
                         officeManager.start();
 
@@ -45,6 +71,8 @@ public class ExcelToPdfConverter {
                 } finally {
                         officeManager.stop();
                 }
+
+                return null;
         }
 
         /**
