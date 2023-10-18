@@ -43,7 +43,7 @@ public class ExcelToPdfConverter {
                         return new ApiResponse(Status.OK.getValue(), "PDF変換処理は正常終了しました。", pdfFilePath);
                 } catch (OfficeException | IOException e) {
                         e.printStackTrace();
-                        return new ApiResponse(Status.NG.getValue(), "PDF変換処理は異常しました。", null);
+                        return new ApiResponse(Status.NG.getValue(), "PDF変換処理は異常終了しました。", null);
                 }
         }
 
@@ -64,7 +64,7 @@ public class ExcelToPdfConverter {
                 try {
                         officeManager.start();
 
-                        File excelFile = convertMultipartFileToFile(xlsxFileMulti, "/Users/yamamotoserina/Desktop");
+                        File excelFile = convertMultipartFileToFile(xlsxFileMulti, "/Users/user-name/Desktop");
                         File pdfFile = new File(pdfFilePath);
                         // 変換処理
                         converter.convert(excelFile).to(pdfFile).execute();
