@@ -13,6 +13,14 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <name>e-iceblue</name>
+            <url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Spring Core Container -->
         <dependency>
@@ -112,6 +120,12 @@
 		    <artifactId>juh</artifactId>
 		    <version>4.1.2</version>
 		</dependency>
+        <!-- Free Spire.XLS for Java -->
+        <dependency>
+            <groupId>e-iceblue</groupId>
+            <artifactId>spire.xls.free</artifactId>
+            <version>5.1.0</version>
+        </dependency>        
     </dependencies>
     
 </project>
