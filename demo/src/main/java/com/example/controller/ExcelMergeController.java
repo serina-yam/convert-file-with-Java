@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.Status;
-import com.example.models.ApiResponse;
+import com.example.model.ApiResponse;
 import com.spire.xls.Workbook;
 import com.spire.xls.Worksheet;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +17,7 @@ import java.util.List;
 public class ExcelMergeController {
     private static final String BASE_FILE_PATH = "/path/to/base_file.xlsx"; // ベースファイルのパス
 
+    // TODO 無料版はJava17では動かない
     @PostMapping("/mergeExcel")
     public ApiResponse mergeExcelFiles(@RequestParam("filesToMerge") List<MultipartFile> filesToMerge) {
         try {

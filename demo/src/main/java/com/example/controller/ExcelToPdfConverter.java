@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.Status;
-import com.example.models.ApiResponse;
+import com.example.model.ApiResponse;
 
 /**
  * JODConverterを使ってxlsxファイルをpdfファイルに変換する.
