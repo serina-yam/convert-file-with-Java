@@ -1,15 +1,17 @@
 # Controller
 
-### [ExcelToPdfConverter.java](https://github.com/serina-yam/create-pdf-with-Java/blob/main/demo/src/main/java/com/example/controllers/ExcelToPdfConverter.java)
+### [ExcelToPdfConverter.java](https://github.com/serina-yam/create-pdf-with-Java/blob/main/demo/src/main/java/com/example/controller/ExcelToPdfConverter.java)
 JODConverterを使ってxlsxファイルをpdfファイルに変換するサンプル
 
 
-### [FileConversionPdfboxController.java](https://github.com/serina-yam/create-pdf-with-Java/blob/main/demo/src/main/java/com/example/controllers/FileConversionPdfboxController.java)
+### [FileConversionPdfboxController.java](https://github.com/serina-yam/create-pdf-with-Java/blob/main/demo/src/main/java/com/example/controller/FileConversionPdfboxController.java)
 POIを使ってxlsmファイルをxlsxファイルに変換するサンプル
 
+### [ExcelMergeController.java](https://github.com/serina-yam/create-pdf-with-Java/blob/main/demo/src/main/java/com/example/controller/ExcelMergeController.java)
+Free Spire.XLS for Javaを使って複数ファイルを1つのファイルにまとめるサンプル
 
 
-## 事前準備
+## JODConverterを使うための事前準備
 1. LibreOfficeのインストール  
 [ダウンロードページ（窓の杜）](https://forest.watch.impress.co.jp/library/software/libreoffice/)
 
